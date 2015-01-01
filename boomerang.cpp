@@ -18,7 +18,7 @@
 #define USE_XML 0			// Cygwin has a weird problem that causes libBinaryFile.dll not to load if the expat library
 							// is used. Note that other Windows versions require expat.
 #else						// For all platforms other than Cygwin:
-#define USE_XML 0			// Set to 0 to not use the expat library for XML loading and saving
+#define USE_XML 1		// Set to 0 to not use the expat library for XML loading and saving
 #endif
 
 #include <iostream>
@@ -223,7 +223,7 @@ void Boomerang::help() {
 bool createDirectory(std::string dir) {
 	std::string remainder(dir);
 	std::string path;
-	unsigned i;
+	size_t i;
 	while ((i = remainder.find('/')) != std::string::npos) {
 		path += remainder.substr(0, i+1);
 		remainder = remainder.substr(i+1);
